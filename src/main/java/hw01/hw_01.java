@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 public class hw_01 {
     public static void main(String[] args) {
-
         Random random = new Random();
         int random_num = random.nextInt(101);
 
@@ -37,10 +36,7 @@ public class hw_01 {
                 System.out.printf("Your numbers: %s", Arrays.toString(entered_nums));
                 break;
             }
-
-
         }
-
     }
 
     public static int[] fillingEnteredNums(int[] prevNums, int newNum) {
@@ -54,7 +50,7 @@ public class hw_01 {
         for (int i = 0; i < newLen; i++) {
             reversEnteredNums[newLen - 1 - i] = prevNums[i];
         }
-
         return reversEnteredNums;
     }
+    
 }
