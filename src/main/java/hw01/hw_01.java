@@ -20,8 +20,19 @@ public class hw_01 {
         int[] entered_nums = new int[0];
 
         while (true) {
-            System.out.print("Please, enter a number [0:100]:  ");
-            guessed_num = scanner.nextInt();
+            guessed_num = 0;
+            boolean isInt = true;
+
+            while (isInt) {
+                Scanner scan = new Scanner(System.in);
+                System.out.print("Please, enter a number [0:100]:  ");
+                if (scan.hasNextInt()) {
+                    guessed_num = scan.nextInt();
+                    isInt = false;
+                } else {
+                    System.out.println("You entered non-integer value!");
+                }
+            }
 
             entered_nums = fillingEnteredNums(entered_nums, guessed_num);
 
@@ -52,5 +63,5 @@ public class hw_01 {
         }
         return reversEnteredNums;
     }
-    
+
 }
