@@ -50,7 +50,7 @@ public class hw_01 {
         }
     }
 
-    public static int[] fillingEnteredNums(int[] prevNums, int newNum) {
+    private static int[] fillingEnteredNums(int[] prevNums, int newNum) {
         int newLen = prevNums.length + 1;
         prevNums = Arrays.copyOf(prevNums, newLen);
         prevNums[newLen - 1] = newNum;
@@ -62,6 +62,10 @@ public class hw_01 {
             reversEnteredNums[newLen - 1 - i] = prevNums[i];
         }
         return reversEnteredNums;
+    }
+
+    private static void checkEquity() {
+
     }
 
 }
