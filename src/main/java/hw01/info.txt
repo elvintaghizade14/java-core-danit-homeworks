@@ -1,0 +1,2 @@
+I have done this exercise due to readme.mx file's requirement.
+There can be done some more optimizations, but i have no enough time. :)

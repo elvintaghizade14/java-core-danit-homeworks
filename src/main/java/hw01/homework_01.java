@@ -1,11 +1,10 @@
 package hw01;
 
 import java.util.Arrays;
-import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
-public class hw_01 {
+public class homework_01 {
     public static void main(String[] args) {
         Random random = new Random();
         int random_num = random.nextInt(101);
@@ -62,10 +61,6 @@ public class hw_01 {
             reversEnteredNums[newLen - 1 - i] = prevNums[i];
         }
         return reversEnteredNums;
-    }
-
-    private static void checkEquity() {
-
     }
 
 }
