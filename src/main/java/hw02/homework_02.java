@@ -10,7 +10,7 @@ public class homework_02 {
         int targetX = (int) (Math.random() * 5);//column
         int targetY = (int) (Math.random() * 5);//row
 
-        System.out.println(targetY + 1 + " " + (targetX + 1));
+//        System.out.println(targetY + 1 + " " + (targetX + 1)); - to know where target placed for make your work easy
 
         area[targetY][targetX] = 1;
 
