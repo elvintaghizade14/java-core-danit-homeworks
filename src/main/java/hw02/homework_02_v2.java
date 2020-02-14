@@ -10,7 +10,7 @@ public class homework_02_v2 {
             int targetX = (int) (Math.random() * 5);//column
             int targetY = (int) (Math.random() * 5);//row
 
-            System.out.println(targetY + 1 + " " + (targetX + 1)); //- to know where target placed for make your work easier, Farid
+//            System.out.println(targetY + 1 + " " + (targetX + 1)); //- to know where target placed for make your work easier, Farid
 
             System.out.println("All set. Get ready to rumble!\n");
 
@@ -23,7 +23,6 @@ public class homework_02_v2 {
             area[targetY][targetX] = 'x';
             int shotX;
             int shotY;
-//          -------------------------
             while (true) {
                 shotX = 0;
                 shotY = 0;
@@ -59,7 +58,6 @@ public class homework_02_v2 {
                         System.out.println("You entered wrong value. Try again!");
                     }
                 }
-//              -------------------------
                 if (area[shotY][shotX] != 'x') {
                     area[shotY][shotX] = '*';
                 } else {
