@@ -8,13 +8,30 @@ public class Pet {
     public String nickname;
     public int age;
     public int trickLevel;
-    public String[] habits = {};
+    public String[] habits;
 
-    public Pet() {
+    public void eat() {
+        System.out.println("I am eating");
     }
 
-    public Pet(String species) {
-        this.nickname = species;
+    public void respond(String nickname) {
+        System.out.printf("I am %s. I miss you!\n", nickname);
+    }
+
+    public void foul() {
+        System.out.println("I need to cover it up");
+    }
+
+    @Override
+    public String toString() {
+        return "dog{" + "species='" + "dog" + '\'' + ", nickname='" + "Rock" + '\'' +
+                ", age=" + 5 + ", trickLevel=" + 75 + ", habits=" +
+                Arrays.toString(new String[]{"eat", "drink", "sleep"}) + '}';
+    }
+
+    public Pet(String species, String nickname) {
+        this.species = species;
+        this.nickname = nickname;
     }
 
     public Pet(String species, String nickname, int age, int trickLevel, String[] habits) {
@@ -25,28 +42,6 @@ public class Pet {
         this.habits = habits;
     }
 
-    public void eat() {
-        System.out.println("I'm eating");
-    }
-
-    public void respond(String nickname) {
-        System.out.printf("Hello, owner. I am %s. I miss you!\n", nickname);
-    }
-
-    public void foul() {
-        System.out.println("'I need to cover it up");
-    }
-
-//    dog{nickname='Rock', age=5, trickLevel=75, habits=[eat, drink, sleep]}, where dog = species;
-
-    @Override
-    public String toString() {
-        return "dog{" +
-                "species='" + "dog" + '\'' +
-                ", nickname='" + "Rock" + '\'' +
-                ", age=" + 5 +
-                ", trickLevel=" + 75 +
-                ", habits=" + Arrays.toString(new String[]{"eat", "drink", "sleep"}) +
-                '}';
+    public Pet() {
     }
 }
