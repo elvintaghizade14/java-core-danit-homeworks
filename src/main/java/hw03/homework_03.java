@@ -4,21 +4,15 @@ import java.util.Scanner;
 
 public class homework_03 {
     public static void main(String[] args) {
-        // 1. declaration
         String[][] schedule = new String[7][2];
-
         schedule[0][0] = "Sunday";
         schedule[0][1] = "do home work";
         schedule[1][0] = "Monday";
         schedule[1][1] = "go to courses; watch a film";
-
         Scanner scan = new Scanner(System.in);
-
         while (true) {
-
             System.out.print("Please, input the day of the week:  ");
             String day = scan.nextLine().trim().toLowerCase();
-
             while (!day.equals("monday") && !day.equals("tuesday") && !day.equals("wednesday") &&
                     !day.equals("thursday") && !day.equals("friday") && !day.equals("saturday") &&
                     !day.equals("sunday") && !day.equals("exit")) {
@@ -26,9 +20,7 @@ public class homework_03 {
                 System.out.print("Please, input the day of the week:  ");
                 day = scan.nextLine().trim().toLowerCase();
             }
-
             if (day.equals("exit")) break;
-
             switch (day) {
                 case "sunday":
                     if (schedule[0][1] == null) schedule[0][1] = "There is no any task for this day :)";
