@@ -31,28 +31,34 @@ public class homework_03 {
 
             switch (day) {
                 case "sunday":
-                    System.out.printf("Your tasks for %s: %s\n", schedule[0][0], schedule[0][1]);
+                    if (schedule[0][1] == null) schedule[0][1] = "There is no any task for this day :)";
+                    System.out.printf("Your tasks for Sunday: %s\n", schedule[0][1]);
                     break;
                 case "monday":
-                    System.out.printf("Your tasks for %s: %s\n", schedule[1][0], schedule[1][1]);
+                    if (schedule[1][1] == null) schedule[1][1] = "There is no any task for this day :)";
+                    System.out.printf("Your tasks for Monday: %s\n", schedule[1][1]);
                     break;
                 case "tuesday":
-                    System.out.printf("Your tasks for %s: %s\n", schedule[2][0], schedule[2][1]);
+                    if (schedule[2][1] == null) schedule[2][1] = "There is no any task for this day :)";
+                    System.out.printf("Your tasks for Tuesday: %s\n", schedule[2][1]);
                     break;
                 case "wednesday":
-                    System.out.printf("Your tasks for %s: %s\n", schedule[3][0], schedule[3][1]);
+                    if (schedule[3][1] == null) schedule[3][1] = "There is no any task for this day :)";
+                    System.out.printf("Your tasks for Wednesday: %s\n", schedule[3][1]);
                     break;
                 case "thursday":
-                    System.out.printf("Your tasks for %s: %s\n", schedule[4][0], schedule[4][1]);
+                    if (schedule[4][1] == null) schedule[4][1] = "There is no any task for this day :)";
+                    System.out.printf("Your tasks for Thursday: %s\n", schedule[4][1]);
                     break;
                 case "friday":
-                    System.out.printf("Your tasks for %s: %s\n", schedule[5][0], schedule[5][1]);
+                    if (schedule[5][1] == null) schedule[5][1] = "There is no any task for this day :)";
+                    System.out.printf("Your tasks for Friday: %s\n", schedule[5][1]);
                     break;
                 case "saturday":
-                    System.out.printf("Your tasks for %s: %s\n", schedule[6][0], schedule[6][1]);
+                    if (schedule[6][1] == null) schedule[6][1] = "There is no any task for this day :)";
+                    System.out.printf("Your tasks for Saturday: %s\n", schedule[6][1]);
                     break;
             }
-
         }
     }
 }
