@@ -1,0 +1,2 @@
+Tapshiriqda ancaq baxar ve birinci gunler uchun tasklar verildiyine gore digerleri
+avtomatik olaraq (refereans tipi oldigina gore String) "null" gosterir.
