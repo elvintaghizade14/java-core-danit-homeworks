@@ -8,6 +8,15 @@ public class Family {
     private Human[] children;
     private Pet pet;
 
+    public void deleteChild() {
+
+    }
+
+    public Family(Human mother, Human father) {
+        this.mother = mother;
+        this.father = father;
+    }
+
     @Override
     public String toString() {
         return "Family{" +
