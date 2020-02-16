@@ -7,11 +7,11 @@ public class homework_02_v3 {
         boolean cont = true;
         while (cont) {
             char[][] area = new char[6][6];
-            int targetY = (int) (Math.random() * 5 + 1);//row
-            int targetX = (int) (Math.random() * 5 + 1);//column
+            int targetY = (int) (Math.random() * 5 + 1);    //row
+            int targetX = (int) (Math.random() * 5 + 1);    //column
             System.out.println("Line = " + targetY + ". Bar = " + targetX);
             System.out.println("All set. Get ready to rumble!\n");
-            drawAreaFirst(area);
+            fillArray(area);
             boolean flag = true;
             while (flag) {
                 int shotY = shotValue("Line");
@@ -50,7 +50,7 @@ public class homework_02_v3 {
         return shotValue;
     }
 
-    public static void drawAreaFirst(char[][] area) {
+    public static void fillArray(char[][] area) {
         for (int y = 0; y < 6; y++) {
             for (int x = 0; x < 6; x++) {
                 if (y == 0) {
@@ -60,8 +60,7 @@ public class homework_02_v3 {
                 } else {
                     area[y][x] = '-';
                 }
-                if (x != 5) System.out.print(area[y][x] + " | ");
-                else System.out.print(area[y][x] + " |");
+                System.out.print(x != 5 ? (area[y][x] + " | ") : (area[y][x] + " |"));
             }
             System.out.println();
         }
@@ -70,8 +69,7 @@ public class homework_02_v3 {
     public static void drawArea(char[][] area) {
         for (int y = 0; y < 6; y++) {
             for (int x = 0; x < 6; x++) {
-                if (x != 5) System.out.print(area[y][x] + " | ");
-                else System.out.print(area[y][x] + " |");
+                System.out.print(x != 5 ? (area[y][x] + " | ") : (area[y][x] + " |"));
             }
             System.out.println();
         }
