@@ -1,2 +1,1 @@
-Tapshiriqda ancaq baxar ve birinci gunler uchun tasklar verildiyine gore digerleri
-avtomatik olaraq (refereans tipi oldigina gore String) "null" gosterir.
+hw_01, hw_02 and hw_03 finished completely! 16/02/2020.
