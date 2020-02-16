@@ -13,12 +13,11 @@ public class homework_03 {
         while (true) {
             System.out.print("Please, input the day of the week:  ");
             String day = scan.nextLine().trim().toLowerCase();
-            while (!day.equals("monday") && !day.equals("tuesday") && !day.equals("wednesday") &&
+            if (!day.equals("monday") && !day.equals("tuesday") && !day.equals("wednesday") &&
                     !day.equals("thursday") && !day.equals("friday") && !day.equals("saturday") &&
                     !day.equals("sunday") && !day.equals("exit")) {
                 System.out.println("Sorry, I don't understand you, please try again.");
-                System.out.print("Please, input the day of the week:  ");
-                day = scan.nextLine().trim().toLowerCase();
+                continue;
             }
             if (day.equals("exit")) break;
             switch (day) {
