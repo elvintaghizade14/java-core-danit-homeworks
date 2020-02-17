@@ -7,9 +7,8 @@ public class homework_02_v3 {
         boolean cont = true;
         while (cont) {
             char[][] area = new char[6][6];
-            int targetY = (int) (Math.random() * 5 + 1);    //row
-            int targetX = (int) (Math.random() * 5 + 1);    //column
-            System.out.println("Line = " + targetY + ". Bar = " + targetX);
+            int targetY = (int) (Math.random() * 5 + 1);    
+            int targetX = (int) (Math.random() * 5 + 1);    
             System.out.println("All set. Get ready to rumble!\n");
             fillArray(area);
             boolean flag = true;
