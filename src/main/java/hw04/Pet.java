@@ -9,9 +9,8 @@ public class Pet {
     public int trickLevel;
     public String[] habits;
 
-    //OWN METHODS
     public void eat() {
-        System.out.println("I am eating");
+        System.out.println("I am eating.\n");
     }
 
     public void respond() {
@@ -19,20 +18,17 @@ public class Pet {
     }
 
     public void foul() {
-        System.out.println("I need to cover it up");
+        System.out.println("I need to cover it up.\n");
     }
 
     @Override
     public String toString() {
-        return species + '{' +
-                ", nickname='" + nickname + '\'' +
-                ", age=" + age +
-                ", trickLevel=" + trickLevel +
-                ", habits=" + Arrays.toString(habits) +
-                '}';
+        return String.format("%s{nickname='%s', age=%d, trickLevel=%d, habits=%s}.",
+                species, nickname, age, trickLevel, Arrays.toString(habits));
     }
 
     //CONSTRUCTORS
+
     public Pet() {
     }
 

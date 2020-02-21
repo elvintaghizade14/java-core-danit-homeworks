@@ -9,6 +9,7 @@ public class Main {
         pet.trickLevel = 75;
         pet.habits = new String[]{"eat", "drink", "sleep"};
 
+
         Human mother = new Human();
         mother.name = "Jane";
         mother.surname = "Karleone";
@@ -20,8 +21,8 @@ public class Main {
         Human child = new Human();
         child.name = "Michael";
         child.surname = "Karleone";
-        child.birthYear = 1977;
-        child.IQ = 90;
+        child.year = 1977;
+        child.iq = 90;
         child.mother = mother;
         child.father = father;
         child.pet = pet;
