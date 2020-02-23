@@ -2,30 +2,14 @@ package hw04;
 
 public class Main {
     public static void main(String[] args) {
-        Pet pet = new Pet();
-        pet.species = "Dog";
-        pet.nickname = "Rock";
-        pet.age = 5;
-        pet.trickLevel = 75;
-        pet.habits = new String[]{"eat", "drink", "sleep"};
+        Pet pet = new Pet("Dog", "Rock", 5, 75, new String[]{"eat", "drink", "sleep"});
 
+        Human mother = new Human("Jane", "Karleone", 1970);
 
-        Human mother = new Human();
-        mother.name = "Jane";
-        mother.surname = "Karleone";
+        Human father = new Human("Vito", "Karleone", 1968);
 
-        Human father = new Human();
-        father.name = "Vito";
-        father.surname = "Karleone";
-
-        Human child = new Human();
-        child.name = "Michael";
-        child.surname = "Karleone";
-        child.year = 1977;
-        child.iq = 90;
-        child.mother = mother;
-        child.father = father;
-        child.pet = pet;
+        Human child = new Human("Michael", "Karleone",
+                1977, 90, pet, mother, father, new String[][]{{"day1", "day2"}, {"task1", "task2"}});
         child.greetPet();
         child.describePet();
 
