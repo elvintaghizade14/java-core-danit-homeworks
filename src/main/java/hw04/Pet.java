@@ -8,7 +8,25 @@ public class Pet {
     public int age;
     public int trickLevel;
     public String[] habits;
+ 
+    //CONSTRUCTORS
+    public Pet() {
+    }
 
+    public Pet(String species, String nickname) {
+        this.species = species;
+        this.nickname = nickname;
+    }
+
+    public Pet(String species, String nickname, int age, int trickLevel, String[] habits) {
+        this.species = species;
+        this.nickname = nickname;
+        this.age = age;
+        this.trickLevel = trickLevel;
+        this.habits = habits;
+    }    
+
+    // Other methods
     public void eat() {
         System.out.println("I am eating.\n");
     }
@@ -25,23 +43,5 @@ public class Pet {
     public String toString() {
         return String.format("%s{nickname='%s', age=%d, trickLevel=%d, habits=%s}.",
                 species, nickname, age, trickLevel, Arrays.toString(habits));
-    }
-
-    //CONSTRUCTORS
-
-    public Pet() {
-    }
-
-    public Pet(String species, String nickname) {
-        this.species = species;
-        this.nickname = nickname;
-    }
-
-    public Pet(String species, String nickname, int age, int trickLevel, String[] habits) {
-        this.species = species;
-        this.nickname = nickname;
-        this.age = age;
-        this.trickLevel = trickLevel;
-        this.habits = habits;
     }
 }
