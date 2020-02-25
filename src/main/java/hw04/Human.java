@@ -9,25 +9,8 @@ public class Human {
     public Human mother;
     public Human father;
     public String[][] schedule;
-
-
-    public void greetPet() {
-        System.out.printf("Hello, %s.\n", pet.nickname);
-    }
-
-    public void describePet() {
-        System.out.printf("I have a %s, he is %d years old, he is %s.\n",
-                pet.species, pet.age, pet.trickLevel > 50 ? "very sly" : "almost not sly");
-    }
-
-    @Override
-    public String toString() {
-        return String.format("Human{name='%s', surname='%s', year=%d, iq=%d, mother=%s %s, father=%s %s, pet=%s.",
-                name, surname, year, iq, mother.name, mother.surname, father.name, father.surname, pet);
-    }
-
+    
     // CONSTRUCTORS
-
     public Human() {
     }
 
@@ -54,5 +37,21 @@ public class Human {
         this.mother = mother;
         this.father = father;
         this.schedule = schedule;
+    }
+    
+    // Other methods
+    public void greetPet() {
+        System.out.printf("Hello, %s.\n", pet.nickname);
+    }
+
+    public void describePet() {
+        System.out.printf("I have a %s, he is %d years old, he is %s.\n",
+                pet.species, pet.age, pet.trickLevel > 50 ? "very sly" : "almost not sly");
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Human{name='%s', surname='%s', year=%d, iq=%d, mother=%s %s, father=%s %s, pet=%s.",
+                name, surname, year, iq, mother.name, mother.surname, father.name, father.surname, pet);
     }
 }
