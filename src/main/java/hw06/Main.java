@@ -2,8 +2,9 @@ package hw06;
 
 public class Main {
   public static void main(String[] args) {
-    for (int i = 0; i < 10000; i++) {
+    for (int i = 0; i < 1000000; i++) {
       Human human = new Human();
+      System.out.println("Human object created...");
     }
 
     String[] habits = {"coffee", "code", "sleeping", "Pet is a programmer :)"};
@@ -41,5 +42,11 @@ public class Main {
     family.addChild(daughter);
     family.setPet(pet);
     System.out.println(family);
+  }
+
+  @Override
+  protected void finalize() throws Throwable {
+    System.out.println("Finalize in Main class...");
+    super.finalize();
   }
 }

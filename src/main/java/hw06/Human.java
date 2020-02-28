@@ -1,5 +1,6 @@
 package hw06;
 
+import java.lang.management.GarbageCollectorMXBean;
 import java.util.Arrays;
 import java.util.Objects;
 
