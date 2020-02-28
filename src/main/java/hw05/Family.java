@@ -49,6 +49,17 @@ public class Family {
     }
   }
 
+  public boolean deleteChild(Human child) {
+    for (int indx = 0; indx < children.length; indx++) {
+      if (child.equals(children[indx])) {
+        if (this.deleteChild(indx)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
   public int countFamily() {
     int countMother = 0;
     int countFather = 0;
