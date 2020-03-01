@@ -21,6 +21,12 @@ public class Family {
     this.children = new Human[0];
   }
 
+  public Family(Human father, Human mother, Pet pet) {
+    this.father = father;
+    this.mother = mother;
+    this.pet = pet;
+  }
+
   // OWN METHODS
   public void addChild(Human child) {
     if (children != null) {

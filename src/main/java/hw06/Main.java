@@ -1,7 +1,7 @@
 package hw06;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Throwable {
     for (int i = 0; i < 1000000; i++) {
       Human human = new Human();
       System.out.println("Human object created...");
@@ -25,28 +25,21 @@ public class Main {
     schedule[1][5] = "TASK_6";
     schedule[1][6] = "TASK_7";
 
-    Human father = new Human("Father", "FATHERSURNAME", 70);
-    father.setSchedule(schedule);
-    Human mother = new Human("Mother", "MOTHERSURNAME", 65);
-    mother.setSchedule(schedule);
-    Human son = new Human("son", "SONSURNAME", 40);
-    son.setSchedule(schedule);
-    Human daughter = new Human("Daughter", "DAUGHTERSURNAME", 39);
-    daughter.setSchedule(schedule);
+    Human father = new Human("Father", "FATHERSURNAME", 70, schedule);
+    Human mother = new Human("Mother", "MOTHERSURNAME", 65, schedule);
+    Human son = new Human("son", "SONSURNAME", 40, schedule);
+    Human daughter = new Human("Daughter", "DAUGHTERSURNAME", 39, schedule);
     Pet pet = new Pet(Species.DOG, "Dog", 3, 75, habits);
 
     System.out.println(pet);
 
-    Family family = new Family(father, mother);
+    Family family = new Family(father, mother, pet);
     family.addChild(son);
     family.addChild(daughter);
-    family.setPet(pet);
     System.out.println(family);
-  }
-
-  @Override
-  protected void finalize() throws Throwable {
-    System.out.println("Finalize in Main class...");
-    super.finalize();
+    family.finalize();
+    mother.finalize();
+    father.finalize();
+    pet.finalize();
   }
 }
