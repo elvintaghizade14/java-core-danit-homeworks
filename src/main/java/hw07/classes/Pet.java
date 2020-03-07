@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public abstract class Pet {
-  private Species species = Species.UNKNOWN;
+  protected Species species = Species.UNKNOWN;
   private String nickname;
   private int age;
   private int trickLevel;
@@ -15,17 +15,8 @@ public abstract class Pet {
 
   }
 
-  public Pet(Species species, String nickname) {
-    this.species = species;
+  public Pet(String nickname) {
     this.nickname = nickname;
-  }
-
-  public Pet(Species species, String nickname, int age, int trickLevel, String[] habits) {
-    this.species = species;
-    this.nickname = nickname;
-    this.age = age;
-    this.trickLevel = trickLevel;
-    this.habits = habits;
   }
 
   public Pet(String nickname, int age, int trickLevel, String[] habits) {
@@ -42,10 +33,7 @@ public abstract class Pet {
 
   public abstract void respond();
 
-
-  public void foul() {
-    System.out.println("I need to cover it up.\n");
-  }
+  public abstract void foul();
 
   // GETTER - SETTERS
   public Species getSpecies() {

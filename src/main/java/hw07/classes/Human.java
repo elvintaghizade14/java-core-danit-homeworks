@@ -46,23 +46,6 @@ public abstract class Human {
             family.getPet().getTrickLevel() > 50 ? "very sly" : "almost not sly");
   }
 
-  private String scheduleToString(String[][] schedule) {
-    if (schedule == null) return "'No task'";
-    else {
-      StringBuilder r = new StringBuilder();
-      for (int i = 0; i < 7; i++) {
-        StringBuilder sb = new StringBuilder();
-        sb.append('[');
-        for (int j = 0; j < 2; j++) {
-          sb.append(schedule[j][i]).append(", ");
-        }
-        r.append(sb.substring(0, sb.length() - 2));
-        r.append("], ");
-      }
-      return r.substring(0, r.length() - 2);
-    }
-  }
-
   //GETTERS - SETTERS
   public String getName() {
     return name;
@@ -115,7 +98,7 @@ public abstract class Human {
   @Override
   public String toString() {
     return String.format("Human{name='%s', surname='%s', year=%d, iq=%d, schedule=%s}",
-            name, surname, year, iq, scheduleToString(schedule));
+            name, surname, year, iq, Arrays.deepToString(schedule));
   }
 
   @Override

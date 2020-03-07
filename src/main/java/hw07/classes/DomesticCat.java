@@ -1,16 +1,18 @@
 package hw07.classes;
 
-public class DomesticCat extends Pet implements Foul {
+public class DomesticCat extends Pet {
   DomesticCat() {
     super();
   }
 
   DomesticCat(String nickname) {
-    super(Species.DOMESTICCAT, nickname);
+    super(nickname);
+    species = Species.DOMESTICCAT;
   }
 
   DomesticCat(String nickname, int age, int trickLevel, String[] habits) {
-    super(Species.DOMESTICCAT, nickname, age, trickLevel, habits);
+    super(nickname, age, trickLevel, habits);
+    species = Species.DOMESTICCAT;
   }
 
   @Override

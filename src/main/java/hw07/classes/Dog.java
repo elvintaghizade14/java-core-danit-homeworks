@@ -1,16 +1,18 @@
 package hw07.classes;
 
-public class Dog extends Pet implements Foul {
+public class Dog extends Pet {
   Dog() {
     super();
   }
 
   Dog(String nickname) {
-    super(Species.DOG, nickname);
+    super(nickname);
+    species = Species.DOG;
   }
 
   Dog(String nickname, int age, int trickLevel, String[] habits) {
-    super(Species.DOG, nickname, age, trickLevel, habits);
+    super(nickname, age, trickLevel, habits);
+    species = Species.DOG;
   }
 
   @Override

@@ -6,15 +6,22 @@ public class Fish extends Pet {
   }
 
   Fish(String nickname) {
-    super(Species.FISH, nickname);
+    super(nickname);
+    species = Species.FISH;
   }
 
   Fish(String nickname, int age, int trickLevel, String[] habits) {
-    super(Species.FISH, nickname, age, trickLevel, habits);
+    super(nickname, age, trickLevel, habits);
+    species = Species.FISH;
   }
 
   @Override
   public void respond() {
     System.out.println("Fish sound ;)");
+  }
+
+  @Override
+  public void foul() {
+    System.out.println("Foul of fish...");
   }
 }
