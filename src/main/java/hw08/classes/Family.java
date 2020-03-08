@@ -22,6 +22,7 @@ public class Family {
   public Family(Human father, Human mother, Pet pet) {
     this.father = father;
     this.mother = mother;
+    this.pet.add(pet);
   }
 
   // OWN METHODS
@@ -41,7 +42,7 @@ public class Family {
   }
 
   public boolean deleteChild(Human child) {
-    if (children.contains(child)){
+    if (children.contains(child)) {
       children.remove(child);
       return true;
     }
