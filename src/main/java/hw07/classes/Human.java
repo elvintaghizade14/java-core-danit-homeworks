@@ -3,7 +3,7 @@ package hw07.classes;
 import java.util.Arrays;
 import java.util.Objects;
 
-public abstract class Human {
+public class Human {
   private String name;
   private String surname;
   private int year;
