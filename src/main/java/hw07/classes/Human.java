@@ -3,7 +3,7 @@ package hw07.classes;
 import java.util.Arrays;
 import java.util.Objects;
 
-public abstract class Human {
+public class Human {
   private String name;
   private String surname;
   private int year;
@@ -38,7 +38,9 @@ public abstract class Human {
   }
 
   // OWN METHODS
-  public abstract void greetPet();
+  public void greetPet() {
+    System.out.printf("Hello, %s\n", family.getPet().getNickname());
+  }
 
   public void describePet() {
     System.out.printf("I have a %s, he is %d years old, he is %s.\n",

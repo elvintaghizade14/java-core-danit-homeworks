@@ -3,12 +3,7 @@ package hw07.classes;
 public class Main {
   public static void main(String[] args) throws Throwable {
     for (int i = 0; i < 10000; i++) {
-      Human human = new Human() {
-        @Override
-        public void greetPet() {
-          System.out.println("Hello");
-        }
-      };
+      Human human = new Human();
       System.out.println("Human object created...");
     }
 
@@ -36,18 +31,8 @@ public class Main {
     Woman mother = new Woman("Mother", "MOTHERSURNAME", 1975, schedule);
     mother.makeUp();
     mother.greetPet();
-    Human son = new Human("son", "SONSURNAME", 1995, schedule) {
-      @Override
-      public void greetPet() {
-        System.out.printf("Hello, %s", getFamily().getPet().getNickname());
-      }
-    };
-    Human daughter = new Human("Daughter", "DAUGHTERSURNAME", 1999, schedule) {
-      @Override
-      public void greetPet() {
-        System.out.printf("Hello, %s", getFamily().getPet().getNickname());
-      }
-    };
+    Human son = new Human("son", "SONSURNAME", 1995, schedule);
+    Human daughter = new Human("Daughter", "DAUGHTERSURNAME", 1999, schedule);
     DomesticCat tom = new DomesticCat("TOM", 3, 80, habits);
     Family family = new Family(father, mother, tom);
     family.addChild(son);
