@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public abstract class Human {
+public class Human {
   private String name;
   private String surname;
   private int year;
@@ -39,7 +39,9 @@ public abstract class Human {
   }
 
   // OWN METHODS
-  public abstract void greetPet();
+  public void greetPet() {
+    System.out.printf("Hello, %s", family.getPet().toString());
+  }
 
   public void describePet() {
     if (family == null || family.getPet() == null) {

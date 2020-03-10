@@ -7,12 +7,7 @@ import java.util.Set;
 public class Main {
   public static void main(String[] args) throws Throwable {
     for (int i = 0; i < 1000; i++) {
-      Human human = new Human() {
-        @Override
-        public void greetPet() {
-          System.out.println("Hello");
-        }
-      };
+      Human human = new Human();
       System.out.println("Human object created...");
     }
 
@@ -38,18 +33,8 @@ public class Main {
     Woman mother = new Woman("Mother", "MOTHERSURNAME", 1975, schedule);
     mother.makeUp();
     mother.greetPet();
-    Human son = new Human("son", "SONSURNAME", 1995, schedule) {
-      @Override
-      public void greetPet() {
-        System.out.println("lorem ipsum doler sit amet :)");
-      }
-    };
-    Human daughter = new Human("Daughter", "DAUGHTERSURNAME", 1999, schedule) {
-      @Override
-      public void greetPet() {
-        System.out.println("Lorem ipsum doler sit amet :)");
-      }
-    };
+    Human son = new Human("son", "SONSURNAME", 1995, schedule);
+    Human daughter = new Human("Daughter", "DAUGHTERSURNAME", 1999, schedule);
     Pet tom = new DomesticCat("TOM", 3, 80, habits);
     Family family = new Family(father, mother, tom);
     family.addChild(son);
