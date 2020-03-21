@@ -1,6 +1,11 @@
-package hw08.classes;
+package hw09.entity;
+
+
+import hw09.entity.human.Human;
+import hw09.entity.pet.Pet;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Family {
   private Human father;
@@ -33,10 +38,10 @@ public class Family {
     }
   }
 
-  public boolean deleteChild(int indx) {
-    if (children == null || indx < 0 || indx >= children.size()) return false;
+  public boolean deleteChild(int index) {
+    if (children == null || index < 0 || index >= children.size()) return false;
     else {
-      children.remove(indx);
+      children.remove(index);
       return true;
     }
   }
@@ -92,8 +97,8 @@ public class Family {
 
   @Override
   public String toString() {
-    return String.format("Family{father='%s',\nmother='%s',\nchildren='%s',\nPet='%s'}",
-            father, mother, children.toString(), pet);
+    return String.format("Family{father=%s mother=%s children=%s Pet=%s}",
+            father, mother, children.stream().map(Human::toString).collect(Collectors.toList()).toString(), pet);
   }
 
   @Override

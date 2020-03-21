@@ -1,4 +1,4 @@
-package hw08.classes;
+package hw09.entity.pet;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -20,7 +20,7 @@ public abstract class Pet {
   }
 
   public Pet(String nickname, int age, int trickLevel, Set<String> habits) {
-    this.nickname = nickname;
+    this(nickname);
     this.age = age;
     this.trickLevel = trickLevel;
     this.habits = habits;
@@ -78,7 +78,7 @@ public abstract class Pet {
 
   @Override
   public String toString() {
-    return String.format("%s{nickname='%s', age=%d, trickLevel=%d, habits=%s}",
+    return String.format("%s[nickname='%s', age=%d, trickLevel=%d, habits=%s]",
             species, nickname, age, trickLevel, habits.toString());
   }
 

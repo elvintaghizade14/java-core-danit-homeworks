@@ -1,8 +1,13 @@
-package hw08.classes;
+package hw09.entity.human;
+
+import hw09.entity.DayOfWeek;
+import hw09.entity.Family;
+import hw09.entity.pet.Pet;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Human {
   private String name;
@@ -17,30 +22,30 @@ public class Human {
   }
 
   public Human(String name, String surname, int year) {
-    this.name = name;
-    this.surname = surname;
+    this(name, surname);
     this.year = year;
   }
 
   public Human(String name, String surname, int year, Map<DayOfWeek, String> schedule) {
-    this.name = name;
-    this.surname = surname;
-    this.year = year;
+    this(name, surname, year);
     this.schedule = schedule;
   }
 
   public Human(String name, String surname, int year, int iq, Map<DayOfWeek, String> schedule, Family family) {
+    this(name, surname, year, schedule);
+    this.iq = iq;
+    this.family = family;
+  }
+
+  public Human(String name, String surname) {
     this.name = name;
     this.surname = surname;
-    this.year = year;
-    this.iq = iq;
-    this.schedule = schedule;
-    this.family = family;
   }
 
   // OWN METHODS
   public void greetPet() {
-    System.out.printf("Hello, %s", family.getPet().toString());
+    System.out.printf("Hello, %s", family.getPet()
+            .stream().map(Pet::getNickname).collect(Collectors.toList()).toString());
   }
 
   public void describePet() {
@@ -48,7 +53,7 @@ public class Human {
     else {
       for (Pet pets : family.getPet()) {
         System.out.printf("I have a %s, he is %d years old, he is %s.\n",
-                pets.species, pets.getAge(), pets.getTrickLevel() > 50 ? "very sly" : "almost not sly");
+                pets.getSpecies(), pets.getAge(), pets.getTrickLevel() > 49 ? "very sly" : "almost not sly");
       }
     }
   }
@@ -104,7 +109,7 @@ public class Human {
 
   @Override
   public String toString() {
-    return String.format("Human{name='%s', surname='%s', year=%d, iq=%d, schedule=%s}",
+    return String.format("Human[name='%s', surname='%s', year=%d, iq=%d, schedule=%s]\n",
             name, surname, year, iq, schedule.toString());
   }
 
