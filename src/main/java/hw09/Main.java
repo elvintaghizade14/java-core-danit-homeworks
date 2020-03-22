@@ -1,48 +1,102 @@
 package hw09;
 
-import hw09.entity.DayOfWeek;
+import hw09.controller.FamilyController;
 import hw09.entity.Family;
-import hw09.entity.human.Human;
 import hw09.entity.human.Man;
 import hw09.entity.human.Woman;
+import hw09.entity.pet.Dog;
 import hw09.entity.pet.DomesticCat;
 import hw09.entity.pet.Pet;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 public class Main {
   public static void main(String[] args) {
-    Set<String> habits = new HashSet<>();
-    habits.add("coffee");
-    habits.add("code");
-    habits.add("sleeping");
-    habits.add("Pet is a programmer :)");
+    Pet dog = new Dog("Jim");
+    dog.setAge(15);
+    dog.setTrickLevel(25);
+    Set<String> habitsOfDog = new HashSet<>();
+    habitsOfDog.add("sleep");
+    habitsOfDog.add("eat");
+    habitsOfDog.add("code");
+    dog.setHabits(habitsOfDog);
 
-    Map<DayOfWeek, String> schedule = new HashMap<>();
-    schedule.put(DayOfWeek.MONDAY,"TASK_1");
-    schedule.put(DayOfWeek.TUESDAY,"TASK_2");
-    schedule.put(DayOfWeek.WEDNESDAY,"TASK_3");
-    schedule.put(DayOfWeek.THURSDAY,"TASK_4");
-    schedule.put(DayOfWeek.FRIDAY,"TASK_5");
-    schedule.put(DayOfWeek.SATURDAY,"TASK_6");
-    schedule.put(DayOfWeek.SUNDAY,"TASK_7");
+    Pet cat = new DomesticCat("Tom");
+    cat.setAge(3);
+    cat.setTrickLevel(80);
+    Set<String> habitsOfCat = new HashSet<>();
+    habitsOfCat.add("run");
+    habitsOfCat.add("play");
+    habitsOfCat.add("sleep");
+    cat.setHabits(habitsOfCat);
 
+    // Kari family
+    Woman motherKari = new Woman("Maria", "Kari", 1976);
+    motherKari.setIq(65);
+    Man fatherKari = new Man("Pier", "Kari", 1970);
+    fatherKari.setIq(75);
+    Family familyKari = new Family(fatherKari, motherKari);
 
-    Man father = new Man("Father", "FATHERSURNAME", 1970, schedule);
-    father.repairCar();
-    father.greetPet();
-    Woman mother = new Woman("Mother", "MOTHERSURNAME", 1975, schedule);
-    mother.makeUp();
-    mother.greetPet();
-    Human son = new Human("son", "SONSURNAME", 1995, schedule);
-    Human daughter = new Human("Daughter", "DAUGHTERSURNAME", 1999, schedule);
-    Pet tom = new DomesticCat("TOM", 3, 80, habits);
-    Family family = new Family(father, mother, tom);
-    family.addChild(son);
-    family.addChild(daughter);
-    System.out.println(family);
+    // Imeno family
+    Man fatherImeno = new Man("Peter", "Imeno", 1981);
+    fatherImeno.setIq(75);
+    Woman motherImeno = new Woman("Kate", "Imeno", 1983);
+    motherImeno.setIq(65);
+    Family familyImeno = new Family(fatherImeno, motherImeno);
+
+    //family Watson
+    Man fatherWatson = new Man("John", "Watson", 1980);
+    fatherWatson.setIq(75);
+    Woman motherWatson = new Woman("Dila", "Watson", 1985);
+    motherWatson.setIq(65);
+    Family familyWatson = new Family(fatherWatson, motherWatson);
+
+    FamilyController familyController = new FamilyController();
+
+    Man man1 = new Man("1111", "1111", 1999);
+    Man man2 = new Man("2222", "2222", 1998);
+    Man man3 = new Man("3333", "3333", 1997);
+    Man man4 = new Man("4444", "4444", 1996);
+    Man man5 = new Man("5555", "5555", 1995);
+    Man man6 = new Man("6666", "6666", 2008);
+    Man man7 = new Man("7777", "7777", 2005);
+    Man man8 = new Man("8888", "8888", 2010);
+
+    Man man = new Man("AAA", "BBB", 2000);
+    Woman woman = new Woman("DDD", "FFF", 2001);
+    familyController.createNewFamily(man,woman);
+
+    familyController.adoptChild(familyKari, man1);
+    familyController.adoptChild(familyKari, man4);
+    familyController.bornChild(familyKari, null, "Jane");
+
+    familyController.adoptChild(familyImeno, man2);
+    familyController.adoptChild(familyImeno, man6);
+    familyController.adoptChild(familyImeno, man7);
+
+    familyController.adoptChild(familyWatson, man3);
+    familyController.adoptChild(familyWatson, man5);
+    familyController.bornChild(familyWatson, "Jack", null);
+
+    familyController.saveFamily(familyKari);
+    familyController.saveFamily(familyImeno);
+    familyController.saveFamily(familyWatson);
+
+    familyController.addPet(2, dog);
+    familyController.addPet(3, cat);
+
+    familyController.getAllFamilies();
+    familyController.displayAllFamilies();
+    familyController.count();
+    familyController.getFamiliesBiggerThan(2);
+    familyController.getFamiliesLessThan(5);
+    familyController.countFamiliesWithMemberNumber(4);
+    familyController.deleteFamilyByIndex(1);
+    familyController.deleteFamily(familyKari);
+    familyController.deleteAllChildrenOlderThen(17);
+    familyController.displayAllFamilies();
+    familyController.getPets(1);
+    familyController.getFamilyById(1);
   }
 }

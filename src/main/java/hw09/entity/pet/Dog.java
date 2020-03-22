@@ -3,16 +3,16 @@ package hw09.entity.pet;
 import java.util.Set;
 
 public class Dog extends Pet {
-  Dog() {
+  public Dog() {
     super();
   }
 
-  Dog(String nickname) {
+  public Dog(String nickname) {
     super(nickname);
     species = Species.DOG;
   }
 
-  Dog(String nickname, int age, int trickLevel, Set<String> habits) {
+  public Dog(String nickname, int age, int trickLevel, Set<String> habits) {
     super(nickname, age, trickLevel, habits);
     species = Species.DOG;
   }

@@ -7,9 +7,8 @@ import hw09.entity.human.Man;
 import hw09.entity.human.Woman;
 import hw09.entity.pet.Pet;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class FamilyService {
 
@@ -65,13 +64,10 @@ public class FamilyService {
   }
 
   public void deleteAllChildrenOlderThen(int age) {
-    familyDao.getAllFamilies().forEach(f -> {
-              List<Human> children = f.getChildren();
-              children.forEach(child -> {
-                if (2020 - child.getYear() > age) children.remove(child);
-              });
-            }
-    );
+    List<Family> families = (List<Family>) familyDao.getAllFamilies();
+    for (Family family : families) {
+      family.getChildren().removeIf(child -> 2020 - child.getYear() > age);
+    }
   }
 
   public int count() {
@@ -88,5 +84,9 @@ public class FamilyService {
 
   public void addPet(int familyIndex, Pet pet) {
     familyDao.getFamilyByIndex(familyIndex).getPet().add(pet);
+  }
+
+  public void saveFamily(Family familyKari) {
+    familyDao.saveFamily(familyKari);
   }
 }
