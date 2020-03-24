@@ -1,8 +1,11 @@
 package Step_Project_1.service;
 
 import Step_Project_1.dao.DAOBookingFileText;
+import Step_Project_1.dao.DAOFlightFileText;
 import Step_Project_1.entity.Booking;
+import Step_Project_1.entity.Flight;
 import Step_Project_1.entity.Passenger;
+import Step_Project_1.ex.BookingNotFoundException;
 import Step_Project_1.ex.FlightNotFoundException;
 import Step_Project_1.helpers.Predicates;
 
@@ -27,7 +30,14 @@ public class BookingService {
     else return result;
   }
 
-  public String cancelBooking(int bookingId) {
-    return null;
+  public String cancelBooking(int bookingId, DAOFlightFileText daoFlight) {
+    return daoBooking.get(bookingId).map(b -> {
+      Flight newFlight = daoFlight.get(b.getFlight_id()).orElseThrow(RuntimeException::new);
+      newFlight.setFreeSpaces(newFlight.getFreeSpaces() + b.getPassengers().size());
+      daoBooking.delete(bookingId);
+      daoFlight.delete(b.getFlight_id());
+      daoFlight.create(newFlight);
+      return "Booking deleted.";
+    }).orElseThrow(BookingNotFoundException::new);
   }
 }

@@ -1,7 +1,6 @@
 package Step_Project_1;
 
 import Step_Project_1.controller.BookingController;
-import Step_Project_1.controller.Controller;
 import Step_Project_1.controller.FlightController;
 import Step_Project_1.dao.DAOBookingFileText;
 import Step_Project_1.dao.DAOFlightFileText;
@@ -12,7 +11,6 @@ import Step_Project_1.ex.FlightNotFoundException;
 import Step_Project_1.io.ConsoleMain;
 import Step_Project_1.service.BookingService;
 import Step_Project_1.service.FlightService;
-import Step_Project_1.service.Service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -22,21 +20,20 @@ import java.util.List;
 public class MainApp {
   public static void main(String[] args) {
 
-    DAOBookingFileText daoBooking = new DAOBookingFileText("bookings.txt");
-    DAOFlightFileText daoFlight = new DAOFlightFileText("flights.txt");
     ConsoleMain console = new ConsoleMain();
 
-    Service service = new Service(daoBooking, daoFlight); // have to delete!
+    DAOBookingFileText daoBooking = new DAOBookingFileText("bookings.txt");
+    DAOFlightFileText daoFlight = new DAOFlightFileText("flights.txt");
+
     BookingService bookingService = new BookingService(daoBooking);
     FlightService flightService = new FlightService(daoFlight);
 
-    Controller controller = new Controller(console, service); // have to delete!
     BookingController bookingController = new BookingController(console, bookingService);
     FlightController flightController = new FlightController(console, flightService);
 
     if (flightController.isFlightsFileEmpty()) {
       int i = 0;
-      while (i++ < 25) flightController.addFlight();
+      while (i++ < 30) flightController.addFlight();
     }
 
     boolean flag = true;
@@ -55,6 +52,7 @@ public class MainApp {
           LocalDate date = null;
           int numOfPeople = 0;
           boolean notValid = true;
+
           console.printLn("Enter destination: ");
           String dest = console.readLn();
           while (notValid) {
@@ -114,7 +112,7 @@ public class MainApp {
           try {
             console.print("Enter booking id: ");
             int bookingId = Integer.parseInt(console.readLn());
-            console.printLn(bookingController.cancelBooking(bookingId));
+            console.printLn(bookingController.cancelBooking(bookingId, daoFlight));
           } catch (NumberFormatException ex) {
             console.printLn("You entered non-integer value!");
           } catch (BookingNotFoundException ex) {

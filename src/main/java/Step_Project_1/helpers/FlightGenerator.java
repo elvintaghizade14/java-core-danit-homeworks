@@ -20,7 +20,7 @@ public class FlightGenerator {
 
   public static LocalDate genDate() {
     LocalDate start = LocalDate.now();
-    long days = ChronoUnit.DAYS.between(start, LocalDate.of(2020, Month.MARCH, 20));
+    long days = ChronoUnit.DAYS.between(start, LocalDate.of(2020, Month.MARCH, 30));
     return start.plusDays(gen.nextInt((int) days + 1));
   }
 
