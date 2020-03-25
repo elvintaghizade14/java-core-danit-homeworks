@@ -33,7 +33,7 @@ public class MainApp {
 
     if (flightController.isFlightsFileEmpty()) {
       int i = 0;
-      while (i++ < 30) flightController.addFlight();
+      while (i++ < 30) flightController.genFlights();
     }
 
     boolean flag = true;
@@ -46,7 +46,14 @@ public class MainApp {
           console.printLn(flightController.showAllFlights());
           break;
         case "2":
-          console.printLn(flightController.getFlightById());
+          try {
+            console.print("Enter flight id: ");
+            console.printLn(flightController.getFlightById(Integer.parseInt(console.readLn())));
+          } catch (NumberFormatException ex) {
+             console.printLn("You entered non integer value!\n");
+          } catch (FlightNotFoundException ex) {
+            console.printLn("No flight found");
+          }
           break;
         case "3":
           LocalDate date = null;

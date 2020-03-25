@@ -1,5 +1,6 @@
 package Step_Project_1.controller;
 
+import Step_Project_1.entity.Flight;
 import Step_Project_1.entity.Passenger;
 import Step_Project_1.ex.FlightNotFoundException;
 import Step_Project_1.io.Console;
@@ -25,36 +26,30 @@ public class FlightController {
     return flightService.showMenu();
   }
 
-  // menu - 1 - show Online-Board
   public String showAllFlights() {
     List<String> allFlights = flightService.getAllFlights();
     return allFlights.size() != 0 ? String.join("\n", allFlights) : "Flight not found";
   }
 
-  // menu - 2 - show flight by id
-  public String getFlightById() {
-    try {
-      console.print("Enter flight id: ");
-      return flightService.getFlightById(Integer.parseInt(console.readLn()));
-    } catch (NumberFormatException ex) {
-      return "You entered non integer value!\n";
-    } catch (FlightNotFoundException ex) {
-      return "No flight found";
-    }
+  public String getFlightById(int flightId) {
+    return flightService.getFlightById(flightId);
   }
 
-  // menu - 3.1 - searching for appropriate bookable flight
   public String searchForBook(String dest, LocalDate date, int numOfPeople) {
     List<String> result = flightService.searchForBook(dest.toLowerCase(), date, numOfPeople);
     if (result.size() == 0) throw new FlightNotFoundException();
     else return String.join("\n", result);
   }
 
-  public void addFlight() {
-    flightService.addFlight();
-  }
-
   public void makeChangesForBooking(int flightId, List<Passenger> passengers) {
     flightService.makeChangesForBooking(flightId, passengers);
+  }
+
+  public void genFlights() {
+    flightService.genFlights();
+  }
+
+  public void addFlight(Flight flight) {
+    flightService.addFlight(flight);
   }
 }

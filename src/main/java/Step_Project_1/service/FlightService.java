@@ -51,9 +51,14 @@ public class FlightService {
             .stream().map(Flight::represent).collect(Collectors.toList());
   }
 
-  public void addFlight() {
+  public void genFlights() {
     daoFlight.create(FlightGenerator.genFlight());
   }
+
+  public void addFlight(Flight flight) {
+    daoFlight.create(flight);
+  }
+
 
   public void makeChangesForBooking(int flightId, List<Passenger> passengers) {
     Optional<Flight> updatedFlight = daoFlight.get(flightId);

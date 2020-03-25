@@ -25,6 +25,17 @@ public class Flight {
     this.freeSpaces = freeSpaces;
   }
 
+  public Flight(String dest, LocalDate date, LocalTime time, int freeSpaces, String filename) {
+    int lastFlightId = new DAOFlightFileText(filename)
+            .getAll().stream().max(Comparator.comparingInt(f -> f.id))
+            .map(f -> f.id).orElse(0);
+    this.id = ++lastFlightId;
+    this.dest = dest;
+    this.date = date;
+    this.time = time;
+    this.freeSpaces = freeSpaces;
+  }
+
   public Flight(int flightId, String dest, LocalDate date, LocalTime time, int freeSpaces) {
     this.id = flightId;
     this.dest = dest;
