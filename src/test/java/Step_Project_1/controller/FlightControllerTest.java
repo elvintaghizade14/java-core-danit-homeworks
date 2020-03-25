@@ -15,7 +15,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 class FlightControllerTest {
-  private final String filename = "flights_text.txt";
+  private final String filename = "flights_text_F.txt";
   private final DAOFlightFileText daoFlight = new DAOFlightFileText(filename);
   private final Console console = new ConsoleMain();
   private final FlightService flightService = new FlightService(daoFlight);

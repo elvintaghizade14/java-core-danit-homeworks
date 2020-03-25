@@ -22,6 +22,14 @@ public class Booking {
     this.passengers = passengers;
   }
 
+  public Booking(int flight_id, List<Passenger> passengers, String filename) {
+    int lastBookingId = new DAOBookingFileText(filename).getAll().stream()
+            .max(Comparator.comparingInt(b -> b.id)).map(b -> b.id).orElse(0);
+    this.id = ++lastBookingId;
+    this.flight_id = flight_id;
+    this.passengers = passengers;
+  }
+
   public Booking(int id, int flight_id, List<Passenger> passengers) {
     this.id = id;
     this.flight_id = flight_id;

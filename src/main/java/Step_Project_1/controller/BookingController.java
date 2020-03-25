@@ -2,7 +2,6 @@ package Step_Project_1.controller;
 
 import Step_Project_1.dao.DAOFlightFileText;
 import Step_Project_1.entity.Passenger;
-import Step_Project_1.ex.FlightNotFoundException;
 import Step_Project_1.io.Console;
 import Step_Project_1.service.BookingService;
 
@@ -17,24 +16,13 @@ public class BookingController {
     this.bookingService = bookingService;
   }
 
-  // menu - 3.2 - booking - found flight above
   public void book(int flightId, List<Passenger> passengers) {
     bookingService.book(flightId, passengers);
   }
 
-  // menu - 5 - show all flights by passenger's info
-  public String getMyFlights() {
-    console.print("Enter name: ");
-    String name = console.readLn();
-    console.print("Enter surname: ");
-    String surname = console.readLn();
-    try {
-      return String.join("\n",
-              bookingService.getMyFlights(name.toLowerCase().trim(),
-                      surname.toLowerCase().trim()));
-    } catch (FlightNotFoundException ex) {
-      return "Smth went wrong and flight not found";
-    }
+  public String getMyFlights(String name, String surname) {
+    return String.join("\n",
+            bookingService.getMyFlights(name.toLowerCase().trim(), surname.toLowerCase().trim()));
   }
 
   public String cancelBooking(int bookingId, DAOFlightFileText daoFlight) {

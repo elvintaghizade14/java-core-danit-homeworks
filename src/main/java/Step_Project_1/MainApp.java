@@ -50,7 +50,7 @@ public class MainApp {
             console.print("Enter flight id: ");
             console.printLn(flightController.getFlightById(Integer.parseInt(console.readLn())));
           } catch (NumberFormatException ex) {
-             console.printLn("You entered non integer value!\n");
+            console.printLn("You entered non integer value!\n");
           } catch (FlightNotFoundException ex) {
             console.printLn("No flight found");
           }
@@ -127,7 +127,17 @@ public class MainApp {
           }
           break;
         case "5":
-          console.printLn(bookingController.getMyFlights());
+          console.print("Enter name: ");
+          String name = console.readLn();
+          console.print("Enter surname: ");
+          String surname = console.readLn();
+          try {
+            console.printLn(String.join("\n",
+                    bookingController.getMyFlights(name.toLowerCase().trim(),
+                            surname.toLowerCase().trim())));
+          } catch (FlightNotFoundException ex) {
+            console.printLn("Smth went wrong and flight not found");
+          }
           break;
         case "6":
           flag = false;
