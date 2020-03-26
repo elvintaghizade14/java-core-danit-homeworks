@@ -1,11 +1,11 @@
-package hw10.service;
+package hw11.service;
 
-import hw10.dao.CollectionFamilyDao;
-import hw10.entity.Family;
-import hw10.entity.human.Human;
-import hw10.entity.human.Man;
-import hw10.entity.human.Woman;
-import hw10.entity.pet.Pet;
+import hw11.dao.CollectionFamilyDao;
+import hw11.entity.Family;
+import hw11.entity.human.Human;
+import hw11.entity.human.Man;
+import hw11.entity.human.Woman;
+import hw11.entity.pet.Pet;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +30,7 @@ public class FamilyService {
       return displayFamilies.toString();
     }
   }
+
 
   public List<Family> getFamiliesBiggerThan(int numberOfPeople) {
     return new ArrayList<>(familyDao.getAllFamiliesBy(f -> f.countFamily() > numberOfPeople));

@@ -1,12 +1,12 @@
-package hw10;
+package hw11;
 
-import hw10.controller.FamilyController;
-import hw10.entity.Family;
-import hw10.entity.human.Man;
-import hw10.entity.human.Woman;
-import hw10.entity.pet.Dog;
-import hw10.entity.pet.DomesticCat;
-import hw10.entity.pet.Pet;
+import hw11.controller.FamilyController;
+import hw11.entity.Family;
+import hw11.entity.human.Man;
+import hw11.entity.human.Woman;
+import hw11.entity.pet.Dog;
+import hw11.entity.pet.DomesticCat;
+import hw11.entity.pet.Pet;
 
 import java.text.ParseException;
 import java.util.HashSet;
@@ -88,7 +88,7 @@ public class Main {
     familyController.addPet(3, cat);
 
     familyController.getAllFamilies();
-    System.out.println(familyController.displayAllFamilies());
+    familyController.displayAllFamilies();
     familyController.count();
     familyController.getFamiliesBiggerThan(2);
     familyController.getFamiliesLessThan(5);
