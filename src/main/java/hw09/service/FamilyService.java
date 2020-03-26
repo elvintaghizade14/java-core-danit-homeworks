@@ -18,8 +18,15 @@ public class FamilyService {
     return (List<Family>) familyDao.getAllFamilies();
   }
 
-  public List<Family> displayAllFamilies() {
-    return (List<Family>) familyDao.getAllFamilies();
+  public String displayAllFamilies() {
+    List<Family> families = familyDao.getFamilies();
+    if (families == null) {
+      return "No family exist.";
+    } else {
+      StringJoiner displayFamilies = new StringJoiner("\n", "[", "]");
+      families.stream().map(Family::toString).forEach(displayFamilies::add);
+      return displayFamilies.toString();
+    }
   }
 
   public List<Family> getFamiliesBiggerThan(int numberOfPeople) {
