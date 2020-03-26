@@ -2,6 +2,7 @@ package hw13.dao;
 
 import hw13.entity.Family;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.stream.Collectors;
 
 public class CollectionFamilyDao implements FamilyDAO<Family> {
 
+  private final static File file = new File("families.bin");
   private List<Family> families = new ArrayList<>();
 
   @Override
@@ -55,6 +57,75 @@ public class CollectionFamilyDao implements FamilyDAO<Family> {
   @Override
   public void updateFamilies(List<Family> families) {
     this.families = families;
+  }
+
+  @Override
+  public void loadData(List<Family> families) {
+    FileOutputStream fos = null;
+    ObjectOutputStream oos = null;
+    try {
+      if (!file.exists()) {
+        file.createNewFile();
+      }
+      if (families.size() == 0) {
+        System.out.println("\nFile is empty\n");
+      }
+      fos = new FileOutputStream(file);
+      oos = new ObjectOutputStream(fos);
+      oos.writeObject(families);
+
+    } catch (IOException e) {
+      e.printStackTrace();
+    } finally {
+      try {
+        if (fos != null) {
+          fos.close();
+        }
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+      try {
+        oos.close();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
+  @Override
+  public Collection<Family> downloadData() {
+    List<Family> families = new ArrayList<>();
+    FileInputStream fin = null;
+    ObjectInputStream ois = null;
+    try {
+      fin = new FileInputStream(file);
+      ois = new ObjectInputStream(fin);
+      families = (List<Family>) ois.readObject();
+    } catch (IOException | ClassNotFoundException e) {
+      e.printStackTrace();
+    } finally {
+      try {
+        if (ois != null) {
+          ois.close();
+        }
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+      try {
+        if (fin != null) {
+          fin.close();
+        }
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
+    if (families.size() == 0) {
+      System.out.println("\nFile is empty!\n");
+    } else {
+      for (Family p : families)
+        System.out.printf("\n%s\n", p.toString());
+    }
+    return families;
   }
 
   public List<Family> getFamilies() {

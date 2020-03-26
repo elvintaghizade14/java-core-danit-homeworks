@@ -6,8 +6,10 @@ import hw10.entity.pet.Pet;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.ZoneId;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -67,18 +69,24 @@ public class Human {
     }
   }
 
+//  previous version
+//  public String describeAge() {
+//    Date birthDate = new Date(birthDay);
+//    Calendar calendar = Calendar.getInstance();
+//    calendar.setTime(birthDate);
+//    int year = calendar.get(Calendar.YEAR);
+//    int month = calendar.get(Calendar.MONTH);
+//    int days = calendar.get(Calendar.DAY_OF_MONTH);
+//    LocalDate localDate = LocalDate.of(year, month, days);
+//    LocalDate now = LocalDate.now();
+//    Period period = Period.between(localDate, now);
+//    return String.format("Years: %d\nMonths: %d\nDays: %d",
+//            period.getYears(), period.getMonths(), period.getDays());
+//  }
+
+//  new version:
   public String describeAge() {
-    Date birthDate = new Date(birthDay);
-    Calendar calendar = Calendar.getInstance();
-    calendar.setTime(birthDate);
-    int year = calendar.get(Calendar.YEAR);
-    int month = calendar.get(Calendar.MONTH);
-    int days = calendar.get(Calendar.DAY_OF_MONTH);
-    LocalDate localDate = LocalDate.of(year, month, days);
-    LocalDate now = LocalDate.now();
-    Period period = Period.between(localDate, now);
-    return String.format("Years: %d\nMonths: %d\nDays: %d",
-            period.getYears(), period.getMonths(), period.getDays());
+    return Instant.ofEpochMilli(this.birthDay).atZone(ZoneId.systemDefault()).toLocalDate().toString();
   }
 
   //GETTERS - SETTERS

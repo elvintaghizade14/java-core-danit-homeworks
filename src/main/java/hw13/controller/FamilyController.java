@@ -79,4 +79,12 @@ public class FamilyController {
   public void updateFamily(List<Family> families) {
     familyService.updateFamily(families);
   }
+
+  public void loadData(List<Family> allFamilies) {
+    familyService.loadData(allFamilies);
+  }
+
+  public List<Family> downloadData() {
+    return familyService.downloadData();
+  }
 }

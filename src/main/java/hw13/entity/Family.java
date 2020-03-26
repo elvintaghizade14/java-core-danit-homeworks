@@ -1,6 +1,5 @@
 package hw13.entity;
 
-
 import hw13.entity.human.Human;
 import hw13.entity.human.Man;
 import hw13.entity.pet.Pet;
@@ -103,11 +102,9 @@ public class Family {
   }
 
   public String prettyFormat() {
-    List<String> childrenList = new ArrayList<>();
-    for (Human child : children)
-      childrenList.add(String.format("\n\t\t%s%s", child instanceof Man ? "boy:" : "girl:", child.toString()));
-    return String.format("Family %s\n\nfather: %s\nmother: %s\nchildren:%s\npets:%s\n\n\n",
-            father.getSurname().toUpperCase(), father, mother, childrenList, pet);
+    return children.stream()
+            .map(c -> String.format("\n\t\t%s%s", c instanceof Man ? "boy:" : "girl:", c.toString()))
+            .collect(Collectors.toList()).toString();
   }
 
   @Override

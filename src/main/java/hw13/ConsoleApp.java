@@ -98,6 +98,7 @@ public class ConsoleApp {
       printCommandList();
       System.out.print("Please enter number of command: ");
       try {
+        label:
         switch (command = validInput(REG_MENU, "Enter a command [1-9]: ")) {
           case "1":
             System.out.println("Test data generated.");
@@ -112,7 +113,7 @@ public class ConsoleApp {
             int numBig = Integer.parseInt(validInput(REG_NUM, "Enter a number: "));
             familyController.getFamiliesBiggerThan(numBig);
             if (familyController.getAllFamilies().size() == 0) {
-              List<Family> families = FileInOut.downloadData();
+              families = familyController.downloadData();
             } else {
               familyController.getFamiliesBiggerThan(numBig);
             }
@@ -160,47 +161,52 @@ public class ConsoleApp {
           case "8":
             printCase8();
             String subCommand = validInput(REG_SUBMENU, "Enter sub-menu number:");
-            if (subCommand.equals("1")) {
-              System.out.print("1. Born a child\n");
-              int fId = Integer.parseInt(validInput(REG_NUM, "Enter family index(ID): "));
-              try {
-                Family family = familyController.getAllFamilies().get(fId - 1);
-                System.out.print("Enter the necessary data (boy's name, girl's name)\n");
-                String boyName = validInput(REG_STR, "Name of son: ");
-                String girlName = validInput(REG_STR, "\n\t- name of daughter: ");
-                familyController.bornChild(family, boyName, girlName);
-              } catch (IndexOutOfBoundsException e) {
-                System.out.printf("Family by %d not presented\n", fId);
-              }
-            } else if (subCommand.equals("2")) {
-              System.out.print("1. Adopt a child\n");
-              int fId = Integer.parseInt(validInput(REG_NUM, "Enter family index(ID): "));
-              try {
-                Family family = familyController.getAllFamilies().get(fId - 1);
-                System.out.print("\t- enter the gender of child (M - man, W - woman): ");
-                String gender = validInput(REG_GEN, "\n\t- enter the gender of child (M - man, W - woman): ");
-
-                boolean gen = gender.toLowerCase().trim().equalsIgnoreCase("m");
-
-                String name = validInput(REG_STR, "\n\t- enter the name of child: ");
-                String year = validInput(REG_YEAR, "\n\t- enter the year of birthday child: ");
-                String month = validInput(REG_MONS, "\n\t- enter the month of birthday child: ");
-                String day = validInput(REG_DAY, "\n\t- enter the day of birthday child: ");
-                int iq = Integer.parseInt(validInput(REG_IQ, "\n\t- enter the IQ of child: "));
-
-                if (gen) {
-                  Human m = new Man(name, family.getFather().getSurname(), String.format("%s/%s/%s", day, month, year), iq);
-                  familyController.adoptChild(family, m);
-                } else {
-                  Human w = new Woman(name, family.getFather().getSurname(), String.format("%s/%s/%s", day, month, year), iq);
-                  familyController.adoptChild(family, w);
+            switch (subCommand) {
+              case "1": {
+                System.out.print("1. Born a child\n");
+                int fId = Integer.parseInt(validInput(REG_NUM, "Enter family index(ID): "));
+                try {
+                  Family family = familyController.getAllFamilies().get(fId - 1);
+                  System.out.print("Enter the necessary data (boy's name, girl's name)\n");
+                  String boyName = validInput(REG_STR, "Name of son: ");
+                  String girlName = validInput(REG_STR, "\n\t- name of daughter: ");
+                  familyController.bornChild(family, boyName, girlName);
+                } catch (IndexOutOfBoundsException e) {
+                  System.out.printf("Family by %d not presented\n", fId);
                 }
-              } catch (IndexOutOfBoundsException e) {
-                System.out.printf("Family by %d not found!\n", fId);
+                break;
               }
-            } else if (subCommand.equals("3")) {
-              System.out.println("returning to main menu");
-              break;
+              case "2": {
+                System.out.print("1. Adopt a child\n");
+                int fId = Integer.parseInt(validInput(REG_NUM, "Enter family index(ID): "));
+                try {
+                  Family family = familyController.getAllFamilies().get(fId - 1);
+                  System.out.print("\t- enter the gender of child (M - man, W - woman): ");
+                  String gender = validInput(REG_GEN, "\n\t- enter the gender of child (M - man, W - woman): ");
+
+                  boolean gen = gender.toLowerCase().trim().equalsIgnoreCase("m");
+
+                  String name = validInput(REG_STR, "\n\t- enter the name of child: ");
+                  String year = validInput(REG_YEAR, "\n\t- enter the year of birthday child: ");
+                  String month = validInput(REG_MONS, "\n\t- enter the month of birthday child: ");
+                  String day = validInput(REG_DAY, "\n\t- enter the day of birthday child: ");
+                  int iq = Integer.parseInt(validInput(REG_IQ, "\n\t- enter the IQ of child: "));
+
+                  if (gen) {
+                    Human m = new Man(name, family.getFather().getSurname(), String.format("%s/%s/%s", day, month, year), iq);
+                    familyController.adoptChild(family, m);
+                  } else {
+                    Human w = new Woman(name, family.getFather().getSurname(), String.format("%s/%s/%s", day, month, year), iq);
+                    familyController.adoptChild(family, w);
+                  }
+                } catch (IndexOutOfBoundsException e) {
+                  System.out.printf("Family by %d not found!\n", fId);
+                }
+                break;
+              }
+              case "3":
+                System.out.println("returning to main menu");
+                break label;
             }
           case "9":
             System.out.println("Remove all children over the age of majority (all families remove children over the age of majority - let us assume they have grown up)");
@@ -210,14 +216,13 @@ public class ConsoleApp {
             break;
           case "10":
             System.out.print("- 10. SAVE TO FILE\n");
-            FileInOut.loadData(familyController.getAllFamilies());
-            break;
+            familyController.loadData(families);
+          break;
           case "11":
             System.out.print("- 11. DOWNLOAD FROM FILE\n");
-            families = FileInOut.downloadData();
             familyController.updateFamily(families);
+            families = familyController.downloadData();
             break;
-
         }
       } catch (NumberFormatException ex) {
         System.out.println("NumberFormatException throwed");

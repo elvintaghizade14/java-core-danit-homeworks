@@ -87,6 +87,7 @@ public class Main {
     familyController.addPet(2, dog);
     familyController.addPet(3, cat);
 
+    System.out.println(man5.describeAge());
     familyController.getAllFamilies();
     System.out.println(familyController.displayAllFamilies());
     familyController.count();

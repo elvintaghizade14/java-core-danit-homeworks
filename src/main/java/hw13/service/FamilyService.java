@@ -103,4 +103,12 @@ public class FamilyService {
   public void updateFamily(List<Family> families) {
     familyDao.updateFamilies(families);
   }
+
+  public void loadData(List<Family> allFamilies) {
+    familyDao.loadData(allFamilies);
+  }
+
+  public List<Family> downloadData() {
+    return (List<Family>) familyDao.downloadData();
+  }
 }
